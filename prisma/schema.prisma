@@ -25,6 +25,8 @@ model User {
   role          Role     @default(MENBER)
   createdAt     DateTime @default(now())
   Post          Post[]
+
+  @@map("user")
 }
 
 model Post {
@@ -41,6 +43,8 @@ model Post {
   categoryId Int?
   Tag        Tag?      @relation(fields: [tagId], references: [id])
   tagId      Int?
+
+  @@map("post")
 }
 
 model Category {
@@ -48,10 +52,14 @@ model Category {
   name   String @unique
   posts  Post[]
   postId Int?
+
+  @@map("category")
 }
 
 model Tag {
   id    Int    @id @default(autoincrement())
   name  String @unique
   posts Post[]
+
+  @@map("tag")
 }
