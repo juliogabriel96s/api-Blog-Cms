@@ -3,7 +3,6 @@ import { CategoryRepository } from "../category-repository";
 
 export class InMemoryCategoryRepository implements CategoryRepository{
   
-   
     public Items: Category[] = []
 
     public currentId = 1
@@ -35,6 +34,14 @@ export class InMemoryCategoryRepository implements CategoryRepository{
         if(!category){
             return null
         }
+
+        return category
+    }
+
+    async save(category: Category) {
+        const itemIndex = this.Items.findIndex(item => item.id === category.id)
+
+        this.Items[itemIndex] = category
 
         return category
     }
