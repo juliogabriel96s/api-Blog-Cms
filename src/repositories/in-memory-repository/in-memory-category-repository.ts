@@ -2,7 +2,7 @@ import { Category, Prisma } from "@prisma/client";
 import { CategoryRepository } from "../category-repository";
 
 export class InMemoryCategoryRepository implements CategoryRepository{
-  
+   
     public Items: Category[] = []
 
     public currentId = 1
@@ -44,5 +44,13 @@ export class InMemoryCategoryRepository implements CategoryRepository{
         this.Items[itemIndex] = category
 
         return category
+    }
+
+    async delete(category: Category): Promise<void> {
+        const itemIndex = this.Items.findIndex(item => item.id === category.id)
+
+        if(itemIndex > -1){
+            this.Items.splice(itemIndex, 1)
+        }
     }
 }

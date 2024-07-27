@@ -28,4 +28,18 @@ describe('Edit category', () =>{
             })
         })
     })
+
+    it('Should be able to edit a category', async() =>{
+        await inMemoryCategoryRepository.create({
+            name: 'category teste'
+        })
+
+        const result = await sut.execute({
+            categoryId: 3,
+            name: 'edit category'
+        })
+
+        expect(result.isLeft()).toBe(true)
+        
+    })
 })

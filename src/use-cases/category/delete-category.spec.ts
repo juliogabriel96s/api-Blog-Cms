@@ -1,18 +1,17 @@
 import { InMemoryCategoryRepository } from "@/repositories/in-memory-repository/in-memory-category-repository";
-import { GetCategoryUseCase } from "./get-category";
+import { DeleteCategoryUseCase } from "./delete-category";
 import { beforeEach, describe, expect, it } from "vitest";
 
 let inMemoryCategoryRepository: InMemoryCategoryRepository
-let sut: GetCategoryUseCase
+let sut: DeleteCategoryUseCase
 
-describe('Get category', () =>{
+describe('Delete category', () =>{
     beforeEach(() =>{
         inMemoryCategoryRepository = new InMemoryCategoryRepository()
-        sut = new GetCategoryUseCase(inMemoryCategoryRepository)
-
+        sut = new DeleteCategoryUseCase(inMemoryCategoryRepository)
     })
 
-    it('Should be able to get a category', async() =>{
+    it('Should be able delete a category', async() =>{
         await inMemoryCategoryRepository.create({
             name: 'category example'
         })
@@ -24,7 +23,7 @@ describe('Get category', () =>{
         expect(result.isRight()).toBe(true)
     })
 
-    it('Should not be able to get a category with id wrong', async() =>{
+    it('Should not be able delete a category with id wrong', async() =>{
         await inMemoryCategoryRepository.create({
             name: 'category example'
         })

@@ -12,11 +12,11 @@ describe('Create category', () =>{
     })
 
     it('Should be able to create a category', async () =>{
-        const response = await sut.execute({
+        const result = await sut.execute({
             name: 'category example'
         })
 
-        expect(response.isRight()).toBe(true)
+        expect(result.isRight()).toBe(true)
     })
 
 
@@ -27,10 +27,10 @@ describe('Create category', () =>{
             name
         })
 
-        const response = await sut.execute({
+        const result = await sut.execute({
             name
         })
 
-        expect(response.isLeft()).toBe(true)
+        expect(result.isLeft()).toBe(true)
     })
 })
