@@ -29,4 +29,15 @@ export class InMemoryTagREpository implements TagRepository{
         return tag
     }
 
+   async findById(id: number) {
+        const tag = this.Items.find(item => item.id === id)
+
+        if(!tag){
+            return null
+        }
+
+        return tag
+    }
+  
+
 }
